@@ -220,6 +220,12 @@ describe("leaderboardPage", () => {
     expect(html).toContain('<link rel="icon" type="image/svg+xml" href="/favicon.svg">');
   });
 
+  it("declares the page type for link previews", () => {
+    expect(html).toContain('<meta property="og:type" content="website">');
+    const ended = leaderboardPage(board, program, links, after);
+    expect(ended).toContain('<meta property="og:type" content="website">');
+  });
+
   it("has the same share preview tags as a contributor page, pointing at its own image", () => {
     expect(html).toContain('<meta property="og:image" content="https://bot.example/leaderboard/2026-10.png?v=abc">');
     expect(html).toContain('<meta property="og:image:width" content="1200">');
